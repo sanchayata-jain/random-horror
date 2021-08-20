@@ -13,22 +13,22 @@ console.log("Welcome to Random Horror");
 
 while (true) {
     console.log("You are currently stuck in the ${randomHorror.rooms[random.Horror.currentRoomIndex].name}...");
-    //console.log("What direction do you want to search?");
-    //console.log("You can choose from: right, left, forward, behind");
+    console.log("What direction do you want to search?");
+    console.log("You can choose from: right, left, forward, behind");
+
     // const directionInput = prompt('You can choose from: right, left, forward, behind');
     // console.log(directionInput);
     // process.stdin.once('data', (chunk) => {
     //     console.log(chunk.toString())
     // })
 
+    // readline.question('Who are you?', name => {
+    //     console.log(`Hey there ${name}!`);
+    //     readline.close();
+    // });
+    // break;
 
-       
-    readline.question('Who are you?', name => {
-        console.log(`Hey there ${name}!`);
-        readline.close();
-    });
-    break;
-    //var directionInput = "forward"; //temporary! once userinput figured out, get rid!!!
+    var directionInput = "forward"; //temporary! once userinput figured out, get rid!!!
 
     var validInput = false;
     var pickUpInput = "";
@@ -71,6 +71,8 @@ while (true) {
             break;
         }
     }
+
+    console.log("broken");
 
     if (pickUpInput == "n") {
         continue;
