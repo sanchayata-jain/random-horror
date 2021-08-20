@@ -21,8 +21,8 @@ export class Door extends InteractItem {
     }
 
     interact(item) {
-        if(item.name == "key") {
-            console.log("Well Done on opening the door...")
+        if(item.name == "flashlight") {
+            console.log("Well Done for finding the door...")
             return true;
 
         }
@@ -65,7 +65,7 @@ class Stairs extends InteractItem {
 
 }
 
-class Television extends InteractItem {
+class TV extends InteractItem {
     constructor() {
         super();
         this.name = television;
