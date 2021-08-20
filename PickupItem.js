@@ -1,4 +1,4 @@
-class PickupItem {
+export class PickupItem {
     
     constructor(name) {
         this.name = name;
@@ -8,5 +8,3 @@ class PickupItem {
         console.log(this.name);
     }
 }
-
-module.exports = {PickupItem};

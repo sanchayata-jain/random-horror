@@ -1,4 +1,4 @@
-class Player {
+export class Player {
     constructor() {
         this.inventory = [];
     }
@@ -15,12 +15,12 @@ class Player {
     }
 
     getInventoryItem(itemName) {
-        for (let item of this.inventory) {
+        for (var item of this.inventory) {
             if (itemName == item.name) {
-                return item;
+                const item1 = item;
+                return item1;
             } 
         }
     }
 }
 
-module.exports = {Player};

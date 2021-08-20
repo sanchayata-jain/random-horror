@@ -1,10 +1,16 @@
-const RoomFile = require("./Room");
-const InteractItemFile = require("./InteractItem");
-const PickupItemFile = require("./PickupItem");
-const PlayerFile = require("./Player");
+// const RoomFile = require("./Room");
+// const InteractItemFile = require("./InteractItem");
+// const PickupItemFile = require("./PickupItem");
+// const PlayerFile = require("./Player");
+
+import * as RoomFile from './Room.js';
+import * as InteractItemFile from './InteractItem.js';
+import * as PickupItemFile from './PickupItem.js';
+import * as PlayerFile from './Player.js';
 
 
-class Game { 
+
+export class Game { 
 
     constructor() {
         const frontItemsAttic = [new PickupItemFile.PickupItem("knife"), new PickupItemFile.PickupItem("key")];
@@ -23,19 +29,21 @@ class Game {
 
     playerPickUpItem(direction, itemName) {
         const currentRoom = this.rooms[this.currentRoomIndex]; //got the current room and assigned it to currentRoom
-        const availableItems = currentRoom.getDirectionPickupItems(direction); 
+        var availableItems = currentRoom.getDirectionPickupItems(direction); 
         var itemRemoved = false;
         for (let item of availableItems) {
             if (item.name == itemName) {
                 this.player.pickupItem(item);
-                this.rooms[this.currentRoomIndex].removePickupItem();
+                this.rooms[this.currentRoomIndex].removePickupItem(item, direction);
                 itemRemoved = true;
-            }
+            } 
         }
+
         if (itemRemoved == false) {
             console.log("Fool! This is not an item! Try again!");
         }
+        
     }
 }
 
-module.exports = {Game};
+

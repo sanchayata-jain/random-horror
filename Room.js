@@ -1,4 +1,4 @@
-class Room {
+export class Room {
     constructor(name, frontItems, backItems, rightItems, leftItems, interactItemObj, direction){
         this.name = name;
         this.frontRoomItems = frontItems;
@@ -46,16 +46,17 @@ class Room {
     removePickupItem(item, direction) {
         if (direction == "forward") {
             const index = this.frontRoomItems.findIndex(x => x.name === item.name);
+            console.log(index);
             this.frontRoomItems.splice(index);
         } else if (direction == "behind") {
             const index = this.backRoomItems.findIndex(x => x.name === item.name);
-            this.frontRoomItems.splice(index);
+            this.backRoomItems.splice(index);
         } else if (direction == "right") {
             const index = this.rightRoomItems.findIndex(x => x.name === item.name);
-            this.frontRoomItems.splice(index);
+            this.rightRoomItems.splice(index);
         } else if (direction == "left") {
             const index = this.leftRoomItems.findIndex(x => x.name === item.name);
-            this.frontRoomItems.splice(index);
+            this.leftRoomItems.splice(index);
         }
     }
 
@@ -64,4 +65,3 @@ class Room {
     }
 }
 
-module.exports = {Room};

@@ -1,4 +1,4 @@
-class InteractItem {
+export class InteractItem {
 
     constructor() {
         this.name = "";
@@ -14,14 +14,13 @@ class InteractItem {
 
 }
 
-class Door extends InteractItem {
+export class Door extends InteractItem {
     constructor() {
         super();
         this.name = "door";
     }
 
     interact(item) {
-        console.log(item.name);
         if(item.name == "key") {
             console.log("Well Done on opening the door...")
             return true;
@@ -98,4 +97,3 @@ class DogBowl extends InteractItem {
     }
 }
 
-module.exports = {InteractItem, Door};
