@@ -8,3 +8,5 @@ class PickupItem {
         console.log(this.name);
     }
 }
+
+module.exports = {PickupItem};

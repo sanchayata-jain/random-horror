@@ -1,18 +1,18 @@
-// class Player {
-//     constructor() {
-//         this.inventory = [];
-//     }
+class Player {
+    constructor() {
+        this.inventory = [];
+    }
 
-//     pickupItem(item) {
-//         this.inventory.push(item);
-//     }
+    pickupItem(item) {
+        this.inventory.push(item);
+    }
 
-//     displayInventory() {
-//         //iterate through inventory list
-//     }
-// }
+    displayInventory() {
+        //iterate through inventory array
+        for (var item of this.inventory) {
+            item.displayName();
+        }
+    }
+}
 
-// player1 = new Player();
-// player1.pickupItem(new PickupItem("knife"));
-// player1.displayInventory();
-
+module.exports = {Player};
