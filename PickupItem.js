@@ -1,10 +1,10 @@
-// class PickupItem {
+export class PickupItem {
     
-//     constructor(name) {
-//         this.name = name;
-//     }
+    constructor(name) {
+        this.name = name;
+    }
 
-//     displayName() {
-//         console.log(this.name);
-//     }
-// }
+    displayName() {
+        console.log(this.name);
+    }
+}
