@@ -1,4 +1,4 @@
-class PickupItem {
+export class PickupItem {
     
     constructor(name) {
         this.name = name;

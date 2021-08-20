@@ -1,4 +1,4 @@
-class InteractItem {
+export class InteractItem {
 
     constructor() {
         this.name = "";
@@ -14,19 +14,19 @@ class InteractItem {
 
 }
 
-class Door extends InteractItem {
+export class Door extends InteractItem {
     constructor() {
         super();
         this.name = "door";
     }
 
     interact(item) {
-        if(item.name == "key") {
-            console.log("Well Done on opening the door...")
+        if(item.name == "flashlight") {
+            console.log("Well Done for finding the door...")
             return true;
 
         }
-        console.log("You can't use this ${item.name}, choose better!");
+        console.log(`You can't use this ${item.name}, choose better!`);
         return false;  
     }
 
@@ -43,7 +43,7 @@ class BedsheetGhost extends InteractItem {
             console.log("Well Done, you have fought the bedsheet ghost...");
             return true;
         } 
-        console.log("You can't use this ${item.name}, choose better!");
+        console.log(`You can't use this ${item.name}, choose better!`);
         return false;  
     }
 }
@@ -59,13 +59,13 @@ class Stairs extends InteractItem {
             console.log("Have fun surfing down the stairs...");
             return true;
         }
-            console.log("You can't use this ${item.name}, choose better!");
+            console.log(`You can't use this ${item.name}, choose better!`);
             return false;
     }
 
 }
 
-class Television extends InteractItem {
+class TV extends InteractItem {
     constructor() {
         super();
         this.name = television;
@@ -76,7 +76,7 @@ class Television extends InteractItem {
             console.log("The TV is now turned on...");
             return true;
         }
-            console.log("You can't use this ${item.name}, choose better!");
+            console.log(`You can't use this ${item.name}, choose better!`);
             return false;
     }
 }
@@ -92,9 +92,8 @@ class DogBowl extends InteractItem {
             console.log("Well Done, you can now feed the dog...");
             return true;
         }
-            console.log("You can't use this ${item.name}, choose better!");
+            console.log(`You can't use this ${item.name}, choose better!`);
             return false;
     }
 }
 
-module.exports = {InteractItem, Door};
