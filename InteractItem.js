@@ -32,7 +32,7 @@ export class Door extends InteractItem {
 
 }
 
-class BedsheetGhost extends InteractItem {
+export class BedsheetGhost extends InteractItem {
     constructor() {
         super();
         this.name = "bedsheet ghost";
@@ -48,7 +48,7 @@ class BedsheetGhost extends InteractItem {
     }
 }
 
-class Stairs extends InteractItem {
+export class Stairs extends InteractItem {
     constructor() {
         super();
         this.name = "stairs";
@@ -65,10 +65,10 @@ class Stairs extends InteractItem {
 
 }
 
-class TV extends InteractItem {
+export class TV extends InteractItem {
     constructor() {
         super();
-        this.name = television;
+        this.name = "television";
     }
 
     interact(item) {
@@ -81,7 +81,7 @@ class TV extends InteractItem {
     }
 }
 
-class DogBowl extends InteractItem {
+export class DogBowl extends InteractItem {
     constructor() {
         super();
         this.name = "dog bowl";

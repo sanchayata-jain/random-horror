@@ -3,8 +3,8 @@ export class Room {
         this.name = name;
         this.frontRoomItems = frontItems;
         this.backRoomItems = backItems;
-        this.leftRoomItems = rightItems;
-        this.rightRoomItems = leftItems;
+        this.rightRoomItems = rightItems;
+        this.leftRoomItems = leftItems;
         this.interactItemObj = interactItemObj;
         this.interactItemObjDirection = direction;
         this.roomComplete = false; 
@@ -47,16 +47,16 @@ export class Room {
         if (direction == "forward") {
             const index = this.frontRoomItems.findIndex(x => x.name === item.name);
             console.log(index);
-            this.frontRoomItems.splice(index);
+            this.frontRoomItems.splice(index, 1);
         } else if (direction == "behind") {
             const index = this.backRoomItems.findIndex(x => x.name === item.name);
-            this.backRoomItems.splice(index);
+            this.backRoomItems.splice(index, 1);
         } else if (direction == "right") {
             const index = this.rightRoomItems.findIndex(x => x.name === item.name);
-            this.rightRoomItems.splice(index);
+            this.rightRoomItems.splice(index, 1);
         } else if (direction == "left") {
             const index = this.leftRoomItems.findIndex(x => x.name === item.name);
-            this.leftRoomItems.splice(index);
+            this.leftRoomItems.splice(index, 1);
         }
     }
 

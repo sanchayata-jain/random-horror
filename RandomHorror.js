@@ -1,6 +1,4 @@
-//const GameFile = require("./Game");
 import * as GameFile from './Game.js';
-//var prompt = require('prompt');
 import PromptSync from "prompt-sync"
 const prompt = PromptSync({sigint: true});
 
@@ -18,36 +16,34 @@ while (!gameEnd) {
     var pickUpInput = "";
     while (validInput == false) {
         randomHorror.rooms[randomHorror.currentRoomIndex].displayAllItemsDirection(directionInput);
-        
         var pickUpInput = prompt("Do you want to pick up any of these items? Press y for yes and n for no.");
-        //pickUpInput = "y";   // temporary, once userinput figured out, get rid!!!
 
         if (pickUpInput == "y" || pickUpInput == "n") {
             validInput = true;
-
         } else {
             validInput = false;
             console.log("You need to press y for yes or n for no, try again: ");
         }
     }
 
-    if (pickUpInput == "n") {
+    if (pickUpInput == "y") {
+        while (true) {
+            console.log("while loop start");
+            randomHorror.rooms[randomHorror.currentRoomIndex].displayPickupItemDirection(directionInput);
+            var itemChoice = prompt("Enter which item here?");
+            randomHorror.playerPickUpItem(directionInput, itemChoice);
+            pickUpInput = prompt("Would you like to select another item (y/n)?  ");
+    
+            if (pickUpInput == "n") {
+                break;
+            }
+        }
+    } else if (pickUpInput == "n" && directionInput != randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObjDirection) {
+        continue;
+    } else if (pickUpInput == "n" && directionInput == randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObjDirection &&
+                randomHorror.player.inventory.length == 0) {
         continue;
     }
-
-
-    while (true) {
-        console.log("while loop start");
-        randomHorror.rooms[randomHorror.currentRoomIndex].displayPickupItemDirection(directionInput);
-        var itemChoice = prompt("Enter which item here?");
-        randomHorror.playerPickUpItem(directionInput, itemChoice);
-        pickUpInput = prompt("Would you like to select another item (y/n)?  ");
-
-        if (pickUpInput == "n") {
-            break;
-        }
-    }
-
 
     if (directionInput == randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObjDirection &&
         randomHorror.player.inventory.length > 0) {
@@ -72,6 +68,7 @@ while (!gameEnd) {
                 } else {
                     randomHorror.currentRoomIndex++;
                     randomHorror.player.inventory = [];
+                    break;
                 }
             } else {
                 console.log("That did nothing...");
