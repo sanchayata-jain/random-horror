@@ -18,7 +18,7 @@ class Room {
         }
     }
 
-    getDirectionPickupItems(direction) 
+    getDirectionPickupItems(direction) {
         // returns array of PickupItems for direction entered by user
         if (direction == "forward") {
             return this.frontRoomItems;
@@ -33,7 +33,7 @@ class Room {
             return this.leftRoomItems;
         }
         
-    }
+    } 
 
     displayPickupItemDirection(direction) {
         // displays all the pickup items in whichever direction user input

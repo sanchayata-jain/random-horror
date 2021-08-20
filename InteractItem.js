@@ -21,12 +21,13 @@ class Door extends InteractItem {
     }
 
     interact(item) {
+        console.log(item.name);
         if(item.name == "key") {
             console.log("Well Done on opening the door...")
             return true;
 
         }
-        console.log("You can't use this ${item.name}, choose better!");
+        console.log(`You can't use this ${item.name}, choose better!`);
         return false;  
     }
 
@@ -43,7 +44,7 @@ class BedsheetGhost extends InteractItem {
             console.log("Well Done, you have fought the bedsheet ghost...");
             return true;
         } 
-        console.log("You can't use this ${item.name}, choose better!");
+        console.log(`You can't use this ${item.name}, choose better!`);
         return false;  
     }
 }
@@ -59,7 +60,7 @@ class Stairs extends InteractItem {
             console.log("Have fun surfing down the stairs...");
             return true;
         }
-            console.log("You can't use this ${item.name}, choose better!");
+            console.log(`You can't use this ${item.name}, choose better!`);
             return false;
     }
 
@@ -76,7 +77,7 @@ class Television extends InteractItem {
             console.log("The TV is now turned on...");
             return true;
         }
-            console.log("You can't use this ${item.name}, choose better!");
+            console.log(`You can't use this ${item.name}, choose better!`);
             return false;
     }
 }
@@ -92,7 +93,7 @@ class DogBowl extends InteractItem {
             console.log("Well Done, you can now feed the dog...");
             return true;
         }
-            console.log("You can't use this ${item.name}, choose better!");
+            console.log(`You can't use this ${item.name}, choose better!`);
             return false;
     }
 }

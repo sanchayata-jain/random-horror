@@ -13,6 +13,14 @@ class Player {
             item.displayName();
         }
     }
+
+    getInventoryItem(itemName) {
+        for (let item of this.inventory) {
+            if (itemName == item.name) {
+                return item;
+            } 
+        }
+    }
 }
 
 module.exports = {Player};

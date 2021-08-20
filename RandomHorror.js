@@ -8,11 +8,11 @@ const readline = require('readline').createInterface({
 });
 
 randomHorror =  new GameFile.Game();
-
 console.log("Welcome to Random Horror");
 
-while (true) {
-    console.log("You are currently stuck in the ${randomHorror.rooms[random.Horror.currentRoomIndex].name}...");
+var gameEnd = false;
+while (!gameEnd) {
+    console.log(`You are currently stuck in the ${randomHorror.rooms[randomHorror.currentRoomIndex].name}...`);
     console.log("What direction do you want to search?");
     console.log("You can choose from: right, left, forward, behind");
 
@@ -72,16 +72,12 @@ while (true) {
         }
     }
 
-    console.log("broken");
-
-    if (pickUpInput == "n") {
-        continue;
-    }
+    // console.log("broken");
 
     if (directionInput == randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObjDirection &&
         randomHorror.player.inventory.length > 0) {
 
-        console.log("Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}?");
+        console.log(`Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}?`);
         // user input y/n and stores it in useItemInput
 
         var useItemInput = "y"; //temp, delete once user input figured out
@@ -92,15 +88,19 @@ while (true) {
 
         while (true) {
             randomHorror.player.displayInventory();
-            console.log("which item do you want to use on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}?");
+            console.log(`which item do you want to use on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}?`);
             // user input chooses which pickup item
 
-            var itemChoice = "key"; //TEMP, remove once input figured out!!!!!!!!!
+            var itemChoiceInput = "key"; //TEMP, remove once input figured out!!!!!!!!!
 
-            randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.interact(itemChoice);
+            var itemChoice = randomHorror.player.getInventoryItem(itemChoiceInput);
+
+            randomHorror.rooms[randomHorror.currentRoomIndex].interactWithItem(itemChoice);
             if (randomHorror.rooms[randomHorror.currentRoomIndex].roomComplete == true) {
                 if (randomHorror.currentRoomIndex == (randomHorror.rooms.length - 1)) {
                     console.log("Congrats!! You won the game!");
+                    gameEnd = true;
+                    break;
                 } else {
                     randomHorror.currentRoomIndex++;
                 }
@@ -115,9 +115,8 @@ while (true) {
                     break;
                 }
             }
-
         }
     }
 }
 
-
+console.log("Exited the main game loop");

@@ -4,7 +4,7 @@ const PickupItemFile = require("./PickupItem");
 const PlayerFile = require("./Player");
 
 
-class Game {
+class Game { 
 
     constructor() {
         const frontItemsAttic = [new PickupItemFile.PickupItem("knife"), new PickupItemFile.PickupItem("key")];
