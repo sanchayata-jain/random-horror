@@ -22,15 +22,19 @@ while (!gameEnd) {
         var itemHasBeenPickedUp = false;
         while (pickUpInput == "y") {
             if (itemHasBeenPickedUp) {
-                // reshow possible items left after an item has been picked up from a certain area of the room
+                // re-show possible items left after an item has been picked up from a certain area of the room
                 randomHorror.rooms[randomHorror.currentRoomIndex].displayPickupItemDirection(directionInput);
                 var pickUpItemsAvailable = randomHorror.areTherePickUpItemsAvailable(directionInput);
                 if (pickUpItemsAvailable == false) {
                     break;
                 }
             }
-            var itemChoice = prompt("Enter which item here?  ");
+
+            console.log();
+            var itemChoice = prompt("Enter the name of the item you would like to select here:  ");
+            console.log();
             randomHorror.sleep(500);
+
             randomHorror.playerPickUpItem(directionInput, itemChoice);
             pickUpInput = prompt("Would you like to select another item (y/n)?  ");
             randomHorror.sleep(500);
@@ -44,7 +48,7 @@ while (!gameEnd) {
         randomHorror.player.inventory.length > 0) {
 
         console.log();
-        var useItemInput = prompt(`Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}?  `);
+        var useItemInput = prompt(`Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}? (y/n)  `);
         console.log();
 
         randomHorror.sleep(500);
@@ -62,7 +66,8 @@ while (!gameEnd) {
 
             if (randomHorror.rooms[randomHorror.currentRoomIndex].roomComplete == true) {
                 if (randomHorror.currentRoomIndex == (randomHorror.rooms.length - 1)) {
-                    console.log("\nCongrats!! You won the game!\n");
+                    //console.log("\nCongrats!! You won the game!\n");
+                    randomHorror.displayGameCompletedMessage();
                     gameEnd = true;
                     usingItems = false;
                 } else {

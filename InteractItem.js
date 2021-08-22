@@ -25,12 +25,26 @@ export class Door extends InteractItem {
     }
 
     displayMessage() {
-        console.log("\nI think this is a door.... but I can't see it's is it's handle...");
+        console.log(`           _________________
+                    |                 |      
+                    |                 |
+                    |                 |
+                    |                 |
+                    |               o |
+                    |                 |
+                    |                 |
+                    |                 |
+                    |_________________| 
+                     
+                    `);
+    
+    console.log("\nI think this is a door, maybe it's the way out of here?.... but I can't see it's handle...");
     }
 
     interact(item) {
         if(item.name == "flashlight") {
-            console.log("\n Well Done for finding the door...\n")
+            console.log("\n Using the flashlight, you have managed to find the door handle!");
+            console.log("Luckily the door is unlocked...\n");
             return true;
 
         }
@@ -47,8 +61,24 @@ export class BedsheetGhost extends InteractItem {
     }
 
     displayMessage() {
-        console.log("\nWhat is this...? It looks like a ghost... but not any ordinary ghost... A BEDSHEET GHOST!");
-        console.log("It looks like to exit this room you need to find a way to get past the bedsheet ghost...");
+        console.log(`%c 
+        .-.
+        .'   '.
+        : g g   :
+        :  o    '.
+        :         '''
+        :             '.
+        :  :         .   ''.
+        :   :          ' . '.
+        '.. :            '. '';
+         ':;             ':'
+            :              '.
+            ''.              '.     .
+               '''''''---..,___';.-'
+        
+          `);
+        console.log("\nWhy is there a bedsheet floating... Oh wait... it's a GHOST!");
+        console.log("It looks like to exit this room you need to find a weapon and fight the ghost...\n");
     }
 
     interact(item) {
@@ -69,6 +99,27 @@ export class Stairs extends InteractItem {
     }
 
     displayMessage() {
+        console.log(`   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
+                        8                           8"b,    "Ya
+                        8                           8  "b,    "Ya
+                        8                    aaaaaaa8,   "b,    "Ya
+                        8                    8"b,    "Ya   "8""""""8
+                        8                    8  "b,    "Ya  8      8
+                        8                     ,   "b,    "Ya8        8
+                        8             8"b,    "Ya   "8"""""""         8
+                        8             8  "b,    "Ya  8              8
+                        8             8,   "b,    "Ya8             8
+                        8      8"b,    "Ya                           8
+                        8      8  "b,    "Ya  8                      8
+                        8aaaaaa8,   "b,    "Ya8                      8
+                        8"b,    "Ya   "8                           8
+                        8  "b,    "Ya  8                           8
+                        8,   "b,    "Ya8                           8
+                        "Ya   "8"""""""                           8
+                        "Ya  8                                  8
+                            "Ya8                                  8
+                            """""""""""""""""""""""""""""""""""""`);
+
         console.log("\nHere are the stairs! This could be your way out... but the stairs are crooked, one step and they could collapse!");
     }
 

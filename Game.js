@@ -83,14 +83,14 @@ export class Game {
 
     displayGameWelcomeMessage() {
         try {
-        console.log("\nWelcome to Random Horror\n");
-        this.sleep(5000);
-        console.log("You've just woken up, there is a vague smell of tacos in the air....\nThis house reminds you of a house from your childhood...");
-        this.sleep(5000);
-        console.log("You find a letter...");
-        this.sleep(1500);
-        console.log("It reads...\n THEY'RE COMING! GET OUT!");
-        this.sleep(500);
+            console.log("\nWelcome to Random Horror\n");
+            this.sleep(5000);
+            console.log("You've just woken up, there is a vague smell of tacos in the air....\nThis house reminds you of a house from your childhood...");
+            this.sleep(5000);
+            console.log("You find a letter...");
+            this.sleep(1500);
+            console.log("It reads...\n THEY'RE COMING! GET OUT!");
+            this.sleep(500);
         //Put cool transition here!
         } catch (err) {
             console.log(`Pause time of ${err[0]} ms exceeded maximum amount of ${err[1]} ms`);
@@ -185,7 +185,7 @@ export class Game {
         var itemInInventory = false;
         var itemChoiceInput = "";
         while (itemInInventory == false) {
-            itemChoiceInput = prompt(`Which item do you want to use on the ${this.rooms[this.currentRoomIndex].interactItemObj.name}?  `);
+            itemChoiceInput = prompt(`Enter which item do you want to use on the ${this.rooms[this.currentRoomIndex].interactItemObj.name}?  `);
             this.sleep(500);
             itemInInventory = this.player.isItemInInventory(itemChoiceInput);
 
@@ -197,6 +197,24 @@ export class Game {
 
         return itemChoiceInput;
     }
+
+    displayGameCompletedMessage() {
+        console.log(`  __      _
+                       \.'---.//|
+                        |\./|  \/
+                       _|.|.|_  \
+                      /(  ) ' '  \
+                     |  \/   . |  \
+                      \_/\__/| |
+                       V  /V / |
+                         /__/ /
+                         \___/\ `);
+
+        console.log("An evil ScoobyDoo enters the kitchen.\nIs that a key on it's collar?");
+        console.log("It is distracted by the steak");
+        console.log("Quick! This is your chance to finally exit the haunted house!");
+        console.log("You have managed to escape.... this time...");
+    };
    
 }
 
