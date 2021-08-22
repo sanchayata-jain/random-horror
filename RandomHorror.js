@@ -4,82 +4,81 @@ const prompt = PromptSync({sigint: true});
 
 
 var randomHorror = new GameFile.Game();
-console.log("Welcome to Random Horror");
-
+randomHorror.displayGameWelcomeMessage();
+randomHorror.displayRoomWelcomeMessage();
 var gameEnd = false;
+
 while (!gameEnd) {
-    console.log(`You are currently stuck in the ${randomHorror.rooms[randomHorror.currentRoomIndex].name}...`);
-    console.log("What direction do you want to search?");
-    const directionInput = prompt('You can choose from: right, left, forward, behind: ');
+    const directionInput = randomHorror.chooseDirection();
+    var itemsAvailable = randomHorror.areTherePickUpItemsAvailable(directionInput);
 
-    var validInput = false;
-    var pickUpInput = "";
-    while (validInput == false) {
-        randomHorror.rooms[randomHorror.currentRoomIndex].displayAllItemsDirection(directionInput);
-        var pickUpInput = prompt("Do you want to pick up any of these items? Press y for yes and n for no.");
-
-        if (pickUpInput == "y" || pickUpInput == "n") {
-            validInput = true;
-        } else {
-            validInput = false;
-            console.log("You need to press y for yes or n for no, try again: ");
-        }
+    if (itemsAvailable == false) {
+        continue;
     }
+
+    var pickUpInput = randomHorror.getPlayerPickUpInput(directionInput);
 
     if (pickUpInput == "y") {
-        while (true) {
-            console.log("while loop start");
-            randomHorror.rooms[randomHorror.currentRoomIndex].displayPickupItemDirection(directionInput);
-            var itemChoice = prompt("Enter which item here?");
+        var itemHasBeenPickedUp = false;
+        while (pickUpInput == "y") {
+            if (itemHasBeenPickedUp) {
+                // reshow possible items left after an item has been picked up from a certain area of the room
+                randomHorror.rooms[randomHorror.currentRoomIndex].displayPickupItemDirection(directionInput);
+                var pickUpItemsAvailable = randomHorror.areTherePickUpItemsAvailable(directionInput);
+                if (pickUpItemsAvailable == false) {
+                    break;
+                }
+            }
+            var itemChoice = prompt("Enter which item here?  ");
+            randomHorror.sleep(500);
             randomHorror.playerPickUpItem(directionInput, itemChoice);
             pickUpInput = prompt("Would you like to select another item (y/n)?  ");
-    
-            if (pickUpInput == "n") {
-                break;
-            }
+            randomHorror.sleep(500);
+
+            itemHasBeenPickedUp = true;
         }
-    } else if (pickUpInput == "n" && directionInput != randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObjDirection) {
-        continue;
-    } else if (pickUpInput == "n" && directionInput == randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObjDirection &&
-                randomHorror.player.inventory.length == 0) {
-        continue;
-    }
+
+    } 
 
     if (directionInput == randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObjDirection &&
         randomHorror.player.inventory.length > 0) {
 
+        console.log();
         var useItemInput = prompt(`Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}?  `);
+        console.log();
 
+        randomHorror.sleep(500);
         if (useItemInput == "n") {
             continue;
         }
 
-        while (true) {
+        var usingItems = true;
+        while (usingItems) {
             randomHorror.player.displayInventory();
-            var itemChoiceInput = prompt(`which item do you want to use on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}?  `);
-            var itemChoice = randomHorror.player.getInventoryItem(itemChoiceInput);
 
+            const itemChoiceInput = randomHorror.getPlayerItemToInteractChoice();
+            const itemChoice = randomHorror.player.getInventoryItem(itemChoiceInput);
             randomHorror.rooms[randomHorror.currentRoomIndex].interactWithItem(itemChoice);
+
             if (randomHorror.rooms[randomHorror.currentRoomIndex].roomComplete == true) {
                 if (randomHorror.currentRoomIndex == (randomHorror.rooms.length - 1)) {
-                    console.log("Congrats!! You won the game!");
+                    console.log("\nCongrats!! You won the game!\n");
                     gameEnd = true;
-                    break;
+                    usingItems = false;
                 } else {
                     randomHorror.currentRoomIndex++;
                     randomHorror.player.inventory = [];
-                    break;
+                    randomHorror.displayRoomWelcomeMessage();
+                    usingItems = false;
                 }
             } else {
                 console.log("That did nothing...");
-                var tryAgainInput = prompt("Try again?");
-
+                randomHorror.sleep(500);
+                var tryAgainInput = randomHorror.getTryAgainInput()
                 if (tryAgainInput == "n") {
-                    break;
+                    usingItems = false;
                 }
             }
         }
     }
 }
-
-console.log("Exited the main game loop");

@@ -12,10 +12,10 @@ export class Room {
 
     displayAllItemsDirection(direction) {
         // displays all the items in whichever direction user inputs
-        this.displayPickupItemDirection(direction);
         if (this.interactItemObjDirection == direction) {
-            this.interactItemObj.displayName();
+            this.interactItemObj.displayMessage();
         }
+        this.displayPickupItemDirection(direction);
     }
 
     getDirectionPickupItems(direction) {
@@ -38,15 +38,19 @@ export class Room {
     displayPickupItemDirection(direction) {
         // displays all the pickup items in whichever direction user input
         const items = this.getDirectionPickupItems(direction);
-        for (let item of items) {
-            item.displayName();
+        console.log("\nThere are some items here you can pick up: ");
+        for (let item of items) {    
+            item.displayName(); 
         }
+    }
+
+    getNumberOfPickupItems(direction) {
+        return this.getDirectionPickupItems(direction).length;
     }
 
     removePickupItem(item, direction) {
         if (direction == "forward") {
             const index = this.frontRoomItems.findIndex(x => x.name === item.name);
-            console.log(index);
             this.frontRoomItems.splice(index, 1);
         } else if (direction == "behind") {
             const index = this.backRoomItems.findIndex(x => x.name === item.name);

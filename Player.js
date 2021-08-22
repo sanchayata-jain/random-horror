@@ -9,9 +9,11 @@ export class Player {
 
     displayInventory() {
         //iterate through inventory array
+        console.log("Here are the items in your inventory:\n");
         for (var item of this.inventory) {
             item.displayName();
         }
+        console.log();
     }
 
     getInventoryItem(itemName) {
@@ -20,6 +22,15 @@ export class Player {
                 const item1 = item;
                 return item1;
             } 
+        }
+        return false;
+    }
+
+    isItemInInventory(itemName) {
+        if (this.getInventoryItem(itemName) != false) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
