@@ -25,9 +25,10 @@ export class Door extends InteractItem {
     }
 
     displayMessage() {
-        console.log(`     ______
+        console.log(`     
+           ______
         ,-' ;  ! '-.
-       / :  !  :  . \
+       / :  !  :  . \\
       |_ ;   __:  ;  |
       )| .  :)(.  !  |
       |"    (##)  _  |
@@ -45,9 +46,10 @@ export class Door extends InteractItem {
 
     interact(item) {
         if(item.name == "flashlight") {
-            console.log(`     ______
+            console.log(`     
+           ______
         ,-' ;  ! '-.
-       / :  !  :  . \
+       / :  !  :  . \\
       |_ ;   __:  ;  |
       )| .  :)(.  !  |
       |"    (##)  _  |
@@ -158,9 +160,9 @@ export class TV extends InteractItem {
 
     displayMessage() {
         console.log(`
-            \  /
-         ____\/________
-        |,----------.  |\
+            \\  /
+         ____\\/________
+        |,----------.  |\\
         ||           |=| |
         ||          || | |
         ||       . _o| | | 
@@ -174,11 +176,12 @@ export class TV extends InteractItem {
     interact(item) {
         if(item.name == "remote") {
             console.log("The TV is now turned on...");
-            console.log(`    \  /
-            ____\/________
-           |,----------.  |\
+            console.log(`    
+               \\  /
+            ____\\/________
+           |,----------.  |\\
            || GO TO THE |=| |
-           || KITCHEN   || | |
+           || KITCHEN   ||| |
            ||       . _o| | | 
            |'-----------' |/ 
             ~~~~~~~~~~~~~~~ 
@@ -197,11 +200,12 @@ export class DogBowl extends InteractItem {
     }
 
     displayMessage() {
-        console.log(`    ______________
-        /\____________/\
-       / (____________) \
-      /  /   8====8   \  \
-      \ /              \ /
+        console.log(`    
+         ______________
+        /\\____________/\\
+       / (____________) \\
+      /  /   8====8   \\  \\
+      \\ /              \\ /
        Y________________Y`);
         console.log("\nHmm an empty Dog Bowl, I don't see any dogs here though... \n");
     }
