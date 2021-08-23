@@ -20,10 +20,10 @@ export class Game {
         const attic = new RoomFile.Room("attic", frontItemsAttic, backItemsAttic, rightItemsAttic,
                                         leftItemsAttic, interactItemAttic, interactItemDirectionAttic);
         
-        const frontItemsBedroom = [new PickupItemFile.PickupItem("Clock"), new PickupItemFile.PickupItem("Pizza box")];
-        const backItemsBedroom = [new PickupItemFile.PickupItem("Dead flowers"), new PickupItemFile.PickupItem("slingshot")];
-        const rightItemsBedroom = [new PickupItemFile.PickupItem("Cracked Mirror")];
-        const leftItemsBedroom = [new PickupItemFile.PickupItem("A Boppit"), new PickupItemFile.PickupItem("Hacksaw")];
+        const frontItemsBedroom = [new PickupItemFile.PickupItem("clock"), new PickupItemFile.PickupItem("pizza box")];
+        const backItemsBedroom = [new PickupItemFile.PickupItem("dead flowers"), new PickupItemFile.PickupItem("slingshot")];
+        const rightItemsBedroom = [new PickupItemFile.PickupItem("cracked mirror")];
+        const leftItemsBedroom = [new PickupItemFile.PickupItem("boppit"), new PickupItemFile.PickupItem("hacksaw")];
         const interactItemBedroom = new InteractItemFile.BedsheetGhost();
         const interactItemDirectionBedroom = "right";
 
@@ -32,9 +32,9 @@ export class Game {
         
         
         const frontItemsHallway = [new PickupItemFile.PickupItem("magnifying glass"), new PickupItemFile.PickupItem("surfboard")];
-        const backItemsHallway = [new PickupItemFile.PickupItem("Mattress"), new PickupItemFile.PickupItem("Towel")];
-        const rightItemsHallway = [new PickupItemFile.PickupItem("Cockroach")];
-        const leftItemsHallway= [new PickupItemFile.PickupItem("Chewing Gum"), new PickupItemFile.PickupItem("Hammer")];
+        const backItemsHallway = [new PickupItemFile.PickupItem("mattress"), new PickupItemFile.PickupItem("towel")];
+        const rightItemsHallway = [new PickupItemFile.PickupItem("cockroach")];
+        const leftItemsHallway= [new PickupItemFile.PickupItem("chewing gum"), new PickupItemFile.PickupItem("hammer")];
         const interactItemHallway = new InteractItemFile.Stairs();
         const interactItemDirectionHallway = "forward";
         
@@ -42,20 +42,20 @@ export class Game {
                                          leftItemsHallway, interactItemHallway, interactItemDirectionHallway);
         
         
-        const frontItemsLivingroom = [new PickupItemFile.PickupItem("Skull"), new PickupItemFile.PickupItem("remote")];
-        const backItemsLivingroom = [new PickupItemFile.PickupItem("Glass"), new PickupItemFile.PickupItem("Heater")];
-        const rightItemsLivingroom = [new PickupItemFile.PickupItem("Rat")];
-        const leftItemsLivingroom = [new PickupItemFile.PickupItem("Screwdriver"), new PickupItemFile.PickupItem("Jack-in-the-box")];
+        const frontItemsLivingroom = [new PickupItemFile.PickupItem("skull"), new PickupItemFile.PickupItem("remote")];
+        const backItemsLivingroom = [new PickupItemFile.PickupItem("glass"), new PickupItemFile.PickupItem("heater")];
+        const rightItemsLivingroom = [new PickupItemFile.PickupItem("rat")];
+        const leftItemsLivingroom = [new PickupItemFile.PickupItem("screwdriver"), new PickupItemFile.PickupItem("jack-in-the-box")];
         const interactItemLivingroom = new InteractItemFile.TV();
         const interactItemDirectionLivingroom = "behind";
                                          
         const livingroom = new RoomFile.Room ("livingroom", frontItemsLivingroom, backItemsLivingroom, rightItemsLivingroom, 
                                             leftItemsLivingroom, interactItemLivingroom, interactItemDirectionLivingroom);
 
-        const frontItemsKitchen = [new PickupItemFile.PickupItem("Cauldron"), new PickupItemFile.PickupItem("steak")];
-        const backItemsKitchen = [new PickupItemFile.PickupItem("Knife"), new PickupItemFile.PickupItem("Rat Poison")];
-        const rightItemsKitchen = [new PickupItemFile.PickupItem("Incense")];
-        const leftItemsKitchen = [new PickupItemFile.PickupItem("Drill"), new PickupItemFile.PickupItem("Crisps")];
+        const frontItemsKitchen = [new PickupItemFile.PickupItem("cauldron"), new PickupItemFile.PickupItem("steak")];
+        const backItemsKitchen = [new PickupItemFile.PickupItem("knife"), new PickupItemFile.PickupItem("rat poison")];
+        const rightItemsKitchen = [new PickupItemFile.PickupItem("incense")];
+        const leftItemsKitchen = [new PickupItemFile.PickupItem("drill"), new PickupItemFile.PickupItem("crisps")];
         const interactItemKitchen = new InteractItemFile.DogBowl();
         const interactItemDirectionKitchen = "behind";
         
@@ -67,6 +67,7 @@ export class Game {
         this.currentRoomIndex = 0;
         this.player = new PlayerFile.Player();
     }
+
 
     sleep(sleepTime) {
         const start = new Date().getTime();
@@ -81,25 +82,70 @@ export class Game {
         }
     }
 
+
     setPlayerName() {
         this.player.name = prompt("Enter your player's name:  ");
     }
 
+
     displayGameWelcomeMessage() {
-        try {
-            console.log("\nWelcome to Random Horror\n");
+        try { 
+            console.log("##########################################################################################################################");
+            console.log(` 
+ _____              _     _  ___      ____    ___      ___      ,,,    ,,,    ....    ,,,,,  .....    ,,,,    .....   ...
+|     \\     /\\     | \\   | ||   \\    /    \\  |   \\    /   |    {   !  !   }  /    \\  !     \\!     \\  /    \\  !     \\  !!!
+|  [] |    /  \\    |  \\  | ||    \\  /  __  \\ |    \\__/    |    }   }  {   { /      \\ {  [] }{  ()  }/      \\ {  0   } !!!
+|   __/   / /\\ \\   |   \\ | || |\\  \\|  [  ]  ||   \\    /   |    {   ~~~~   }!  [##]  !}   ,,/}   ,,/{  [@@]  }}   ,,/  !!!
+|   \\    / /__\\ \\  |    \\| || |/  /|  [__]  ||   |\\  /|   |    !   ~~~~   !!  [##]  !!   \\  !    \\ {  [@@]  }{   \\    !!!
+| |\\ \\  /   __   \\ |  |\\   ||    /  \\      / |   | \\/ |   |    !   {  }   ! \\      / } {\\ \\ } {\\  \\ \\      / ! !\\ \\    
+|_| \\_\\/__ /  \\ __\\|__| \\__||___/    \\____/  |___|    |___|    },,,!  !,,,{  \\..../  {,} \\,\\{.} \\.,\\ \\,,,,/  }.{ \\.\\  !!!`);
+            console.log(`                              .     .
+                               !!!!!!!                          
+                       .       [[[|]]]    .
+                       !!!!!!!!|--_--|!!!!!
+                       [[[[[[[[\\_(X)_/]]]]]
+               .-.     /-_--__-/_--_-\\-_--\\
+               |=|    /    \\             / \\
+           . . |=| ._/-__-__\\===========/-__\\_               
+           !!!!!!!!!\\========[ /]]|[[\\ ]=====/
+          /-_--_-_-_[[[[[[[[[||==  == ||]]]]]]
+         /-_--_--_--_|=  === ||=/^|^\\ ||== =|
+        /-_-/^|^\\-_--| /^|^\\=|| | | | ||^\\= |
+       /_-_-| | |-_--|=| | | ||=|_|_|=||"|==|
+      /-__--|_|_|_-_-| |_|_|=||______=||_| =|
+     /_-__--_-__-___-|_=__=_.'---------'._=_|__
+    /-----------------------\\===========/-----/
+   ^^^\\^^^^^^^^^^^^^^^^^^^^^^[[|]]|[[|]]=====/
+       |.' ..==::'"'::==.. '.[ /~~~~~\\ ]]]]]]]
+       | .'=[[[|]]|[[|]]]='._||==  =  || =\\ ]
+       ||== =|/ _____ \\|== = ||=/^|^\\=||^\\ ||
+       || == '||-----||' = ==|| | | |=|| |=||
+       ||= == ||:^s^:|| = == ||=| | | || |=||
+       || = = ||:___:||= == =|| |_|_| ||_|=||
+      _||_ = =||o---.|| = ==_||_= == =||==_||_
+      \\__/= = ||:   :||= == \\__/[][][][][]\\__/
+      [||]= ==||:___:|| = = [||]\\\\//\\\\//\\\\[||]
+      }  {---'"'-----'"'- --}  {//\\\\//\\\\//}  {
+    __[==]__________________[==]\\\\//\\\\//\\\\[==]_
+   |'|~~~~|================|~~~~|~~~~~~~~|~~~~||
+   |^| ^  |================|^   | ^ ^^ ^ |  ^ ||
+  \\|//\\\\/^|/==============\\|/^\\\\\\^/^.\\^///\\\\//|///
+ \\\\///\\\\\\//===============\\\\//\\\\///\\\\\\\\////\\\\\\/////
+ ""'""'""".'..'. ' '. ''..'.""'""'""'""''"''"''""`);
+            console.log("###############################################################################################################################");
             this.sleep(5000);
+            console.log("\n\n\n\n\n\n");
             console.log("You've just woken up, there is a vague smell of tacos in the air....\nThis house reminds you of a house from your childhood...");
             this.sleep(5000);
             console.log("You find a letter...");
             this.sleep(1500);
             console.log("It reads...\n THEY'RE COMING! GET OUT!");
             this.sleep(500);
-        //Put cool transition here!
         } catch (err) {
             console.log(`Pause time of ${err[0]} ms exceeded maximum amount of ${err[1]} ms`);
         }
     }
+
 
     displayRoomWelcomeMessage() {
         this.sleep (2000);
@@ -108,6 +154,7 @@ export class Game {
         console.log("You need to get out of this house!\nThere must be a way out....");
         this.sleep(2000);
     }
+
 
     chooseDirection() {
         var directionInput = "";
@@ -125,6 +172,7 @@ export class Game {
         return directionInput;
     }
 
+
     areTherePickUpItemsAvailable(direction) {
         const pickUpItemsNum = this.rooms[this.currentRoomIndex].getNumberOfPickupItems(direction);
         if (pickUpItemsNum == 0) {
@@ -134,6 +182,7 @@ export class Game {
         }
         return true;
     }
+
 
     getPlayerPickUpInput(direction) {
         var pickUpInput = "";
@@ -152,6 +201,7 @@ export class Game {
         return pickUpInput;
     }
 
+
     playerPickUpItem(direction, itemName) {
         const currentRoom = this.rooms[this.currentRoomIndex]; 
         var availableItems = currentRoom.getDirectionPickupItems(direction); 
@@ -169,6 +219,7 @@ export class Game {
         }
     }
 
+
     getYOrN(message) {
         var yOrNInput = "";
         while (yOrNInput != "y" && yOrNInput != "n") {
@@ -183,6 +234,7 @@ export class Game {
 
         return yOrNInput;
     }
+
 
     getPlayerItemToInteractChoice() {
         var itemInInventory = false;
@@ -201,6 +253,7 @@ export class Game {
         return itemChoiceInput;
     }
 
+
     playerLoseLife () {
         this.player.lives --;
         console.log(`You lost a life, you only have ${this.player.lives} live(s) remaining!`);
@@ -215,22 +268,24 @@ export class Game {
         return false;
     }
 
+
     gameReset () {
         this.currentRoomIndex = 0;
         this.player.reset();
     }
 
+
     displayGameCompletedMessage() {
-        console.log(`  __      _
-                       \.'---.//|
-                        |\./|  \/
-                       _|.|.|_  \
-                      /(  ) ' '  \
-                     |  \/   . |  \
-                      \_/\__/| |   \
-                       V  /V / |    \
+        console.log(`     __      _
+                       \\.'---.//|
+                        |\\./|  \\/
+                       _|.|.|_  \\
+                      /(  ) ' '  \\
+                     |  \\/   . |  \\
+                      \\_/\\__/| |   \\
+                       V  /V / |    \\
                          /__/ /      |
-                         \___/\      |
+                         \\___/\\      |
                                =======
                                ===0===
                                   |

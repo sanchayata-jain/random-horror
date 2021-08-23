@@ -50,8 +50,11 @@ while (!gameEnd) {
         randomHorror.player.inventory.length > 0) {
 
         console.log();
-        var useItemInput = prompt(`Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}? (y/n)  `);
+        //var useItemInput = prompt(`Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}? (y/n)  `);
+        var useItemInput = randomHorror.getYOrN(`Do you want to use an item on the ${randomHorror.rooms[randomHorror.currentRoomIndex].interactItemObj.name}? (y/n)  `);
         console.log();
+
+        
 
         randomHorror.sleep(500);
         if (useItemInput == "n") {
