@@ -1,9 +1,17 @@
 export class Player {
     constructor() {
         this.inventory = [];
+        this.name = "";
+        this.lives = 3;
+    }
+
+    reset() {
+        this.lives = 3;
+        this.inventory = [];
     }
 
     pickupItem(item) {
+        //player needs to be able to pick up items
         this.inventory.push(item);
     }
 

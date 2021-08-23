@@ -81,6 +81,10 @@ export class Game {
         }
     }
 
+    setPlayerName() {
+        this.player.name = prompt("Enter your player's name:  ");
+    }
+
     displayGameWelcomeMessage() {
         try {
             console.log("\nWelcome to Random Horror\n");
@@ -131,22 +135,6 @@ export class Game {
         return true;
     }
 
-    getTryAgainInput() {
-        var tryAgainInput = "";
-        while (tryAgainInput != "y" && tryAgainInput != "n") {
-            console.log();
-            tryAgainInput = prompt("Do you want to try again? (y/n):   ");
-            this.sleep(500);
-    
-            if (tryAgainInput != "y" && tryAgainInput != "n") {
-                console.log("You need to press y for yes or n for no, try again");
-                this.sleep(500);
-            }
-        }
-
-        return tryAgainInput;
-    }
-
     getPlayerPickUpInput(direction) {
         var pickUpInput = "";
         while (pickUpInput != "y" && pickUpInput != "n") {
@@ -165,7 +153,7 @@ export class Game {
     }
 
     playerPickUpItem(direction, itemName) {
-        const currentRoom = this.rooms[this.currentRoomIndex]; //got the current room and assigned it to currentRoom
+        const currentRoom = this.rooms[this.currentRoomIndex]; 
         var availableItems = currentRoom.getDirectionPickupItems(direction); 
         var itemRemoved = false;
         for (let item of availableItems) {
@@ -179,6 +167,21 @@ export class Game {
         if (itemRemoved == false) {
             console.log("Fool! This is not an item! Try again!");
         }
+    }
+
+    getYOrN(message) {
+        var yOrNInput = "";
+        while (yOrNInput != "y" && yOrNInput != "n") {
+            console.log();
+            yOrNInput = prompt(message);
+            this.sleep(500);
+            if (yOrNInput != "y" && yOrNInput != "n") {
+                console.log("You need to press y for yes or n for no, try again");
+                this.sleep(500);
+            }
+        }
+
+        return yOrNInput;
     }
 
     getPlayerItemToInteractChoice() {
@@ -198,6 +201,25 @@ export class Game {
         return itemChoiceInput;
     }
 
+    playerLoseLife () {
+        this.player.lives --;
+        console.log(`You lost a life, you only have ${this.player.lives} live(s) remaining!`);
+        if (this.player.lives == 0) {
+            console.log("Well... this is a bit awkward... but you dead");
+            console.log("But... the Grim Reaper is on holiday so I guess we can pretend like this never happened...\n\n\n\n\n\n\n\n");
+            this.sleep(5000);
+            this.displayRoomWelcomeMessage();
+            return true;
+        }
+
+        return false;
+    }
+
+    gameReset () {
+        this.currentRoomIndex = 0;
+        this.player.reset();
+    }
+
     displayGameCompletedMessage() {
         console.log(`  __      _
                        \.'---.//|
@@ -205,10 +227,16 @@ export class Game {
                        _|.|.|_  \
                       /(  ) ' '  \
                      |  \/   . |  \
-                      \_/\__/| |
-                       V  /V / |
-                         /__/ /
-                         \___/\ `);
+                      \_/\__/| |   \
+                       V  /V / |    \
+                         /__/ /      |
+                         \___/\      |
+                               =======
+                               ===0===
+                                  |
+                                  |K
+                         
+                         `);
 
         console.log("An evil ScoobyDoo enters the kitchen.\nIs that a key on it's collar?");
         console.log("It is distracted by the steak");

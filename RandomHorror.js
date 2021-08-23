@@ -5,6 +5,7 @@ const prompt = PromptSync({sigint: true});
 
 var randomHorror = new GameFile.Game();
 randomHorror.displayGameWelcomeMessage();
+randomHorror.setPlayerName();
 randomHorror.displayRoomWelcomeMessage();
 var gameEnd = false;
 
@@ -12,11 +13,13 @@ while (!gameEnd) {
     const directionInput = randomHorror.chooseDirection();
     var itemsAvailable = randomHorror.areTherePickUpItemsAvailable(directionInput);
 
-    if (itemsAvailable == false) {
+    if (itemsAvailable == false && randomHorror.player.inventory.length == 0) {
         continue;
     }
-
-    var pickUpInput = randomHorror.getPlayerPickUpInput(directionInput);
+    var pickUpInput = "n";
+    if (itemsAvailable == true) {
+        pickUpInput = randomHorror.getPlayerPickUpInput(directionInput);
+    }
 
     if (pickUpInput == "y") {
         var itemHasBeenPickedUp = false;
@@ -36,8 +39,7 @@ while (!gameEnd) {
             randomHorror.sleep(500);
 
             randomHorror.playerPickUpItem(directionInput, itemChoice);
-            pickUpInput = prompt("Would you like to select another item (y/n)?  ");
-            randomHorror.sleep(500);
+            pickUpInput = randomHorror.getYOrN("Would you like to select another item?  ");
 
             itemHasBeenPickedUp = true;
         }
@@ -66,7 +68,6 @@ while (!gameEnd) {
 
             if (randomHorror.rooms[randomHorror.currentRoomIndex].roomComplete == true) {
                 if (randomHorror.currentRoomIndex == (randomHorror.rooms.length - 1)) {
-                    //console.log("\nCongrats!! You won the game!\n");
                     randomHorror.displayGameCompletedMessage();
                     gameEnd = true;
                     usingItems = false;
@@ -78,8 +79,13 @@ while (!gameEnd) {
                 }
             } else {
                 console.log("That did nothing...");
+                var dead = randomHorror.playerLoseLife();
+                if (dead) {
+                    randomHorror.gameReset();
+                    break;
+                }
                 randomHorror.sleep(500);
-                var tryAgainInput = randomHorror.getTryAgainInput()
+                var tryAgainInput = randomHorror.getYOrN("Do you want to try again (y/n) ?   ");
                 if (tryAgainInput == "n") {
                     usingItems = false;
                 }

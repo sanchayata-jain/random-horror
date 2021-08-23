@@ -25,24 +25,41 @@ export class Door extends InteractItem {
     }
 
     displayMessage() {
-        console.log(`           _________________
-                    |                 |      
-                    |                 |
-                    |                 |
-                    |                 |
-                    |               o |
-                    |                 |
-                    |                 |
-                    |                 |
-                    |_________________| 
-                     
-                    `);
+        console.log(`     ______
+        ,-' ;  ! '-.
+       / :  !  :  . \
+      |_ ;   __:  ;  |
+      )| .  :)(.  !  |
+      |"    (##)  _  |
+      |  :  ;''      (
+      |  :  :  .     |
+      )_ !  ,  ;  ;  |
+      || .  .  :  :  |
+      |" .  |  :  .  |
+      |_____;----.___|
+      
+      `);
     
     console.log("\nI think this is a door, maybe it's the way out of here?.... but I can't see it's handle...");
     }
 
     interact(item) {
         if(item.name == "flashlight") {
+            console.log(`     ______
+        ,-' ;  ! '-.
+       / :  !  :  . \
+      |_ ;   __:  ;  |
+      )| .  :)(.  !  |
+      |"    (##)  _  |
+      |  :  ;''  (_) (
+      |  :  :  .     |
+      )_ !  ,  ;  ;  |
+      || .  .  :  :  |
+      |" .  |  :  .  |
+      |_____;----.___|
+      
+      `);
+
             console.log("\n Using the flashlight, you have managed to find the door handle!");
             console.log("Luckily the door is unlocked...\n");
             return true;
@@ -99,7 +116,7 @@ export class Stairs extends InteractItem {
     }
 
     displayMessage() {
-        console.log(`   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
+        console.log(`                   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
                         8                           8"b,    "Ya
                         8                           8  "b,    "Ya
                         8                    aaaaaaa8,   "b,    "Ya
@@ -112,7 +129,7 @@ export class Stairs extends InteractItem {
                         8      8"b,    "Ya                           8
                         8      8  "b,    "Ya  8                      8
                         8aaaaaa8,   "b,    "Ya8                      8
-                        8"b,    "Ya   "8                           8
+                        8"b,          "8                           8
                         8  "b,    "Ya  8                           8
                         8,   "b,    "Ya8                           8
                         "Ya   "8"""""""                           8
@@ -140,12 +157,32 @@ export class TV extends InteractItem {
     }
 
     displayMessage() {
+        console.log(`
+            \  /
+         ____\/________
+        |,----------.  |\
+        ||           |=| |
+        ||          || | |
+        ||       . _o| | | 
+        |'-----------' |/ 
+         ~~~~~~~~~~~~~~~ 
+                           `);
+
         console.log("\nA television... ");
     }
 
     interact(item) {
         if(item.name == "remote") {
             console.log("The TV is now turned on...");
+            console.log(`    \  /
+            ____\/________
+           |,----------.  |\
+           || GO TO THE |=| |
+           || KITCHEN   || | |
+           ||       . _o| | | 
+           |'-----------' |/ 
+            ~~~~~~~~~~~~~~~ 
+                              `);
             return true;
         }
             console.log(`You can't use this ${item.name}, choose better!`);
@@ -160,7 +197,13 @@ export class DogBowl extends InteractItem {
     }
 
     displayMessage() {
-        console.log("\nHmm a Dog Bowl, I don't see any dogs here though... \n");
+        console.log(`    ______________
+        /\____________/\
+       / (____________) \
+      /  /   8====8   \  \
+      \ /              \ /
+       Y________________Y`);
+        console.log("\nHmm an empty Dog Bowl, I don't see any dogs here though... \n");
     }
 
     interact(item) {
